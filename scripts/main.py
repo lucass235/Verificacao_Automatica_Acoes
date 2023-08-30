@@ -29,6 +29,7 @@ def get_action_value(action):
         title_action = title.text
         
     except Exception as e:
+        
         return f'Erro ao obter o valor da ação: {e}'
     
     # Fechar o navegador
@@ -46,6 +47,4 @@ def main():
     
     print(value)
 
-
-if __name__ == "__main__":
-    main()
+main()
