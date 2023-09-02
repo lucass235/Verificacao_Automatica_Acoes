@@ -1,4 +1,8 @@
 from selenium import webdriver
+import pywhatkit as kit
+import pyautogui
+import time
+
 
 from selenium.webdriver.common.by import By
 
@@ -37,14 +41,31 @@ def get_action_value(action):
     
     return value_action, title_action
 
+def send_message_whatsapp(msg, number):
+    """
+    Envia uma mensagem para um número de telefone no WhatsApp.
+
+    Args:
+        msg (str): Mensagem a ser enviada.
+        number (str): Número de telefone.
+    """
+
+    # Enviar mensagem para o número especificado
+    kit.sendwhatmsg(number, msg, 22, 37)
+    pyautogui.click(1720, 980)
+
 def main():
     """
     Programa principal.
     """
 
     # Obtém o valor da ação
-    value = get_action_value(action='VGIR11')
+    value, title = get_action_value(action='VGIR11')
     
-    print(value)
+    msg = f'Nome da ação: {title}\nValor: R${value}'
+    
+    send_message_whatsapp(msg, '+5562984974990')
+    print("mensagem enviada!")
 
 main()
+
